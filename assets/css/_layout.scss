@@ -1,0 +1,140 @@
+// フォントサイズ
+$basesize: 10;
+@mixin fs($size) {
+  font-size: $size + px;
+  font-size: ($size / $basesize) + rem;
+}
+@mixin fs-important($size) {
+  font-size: $size + px !important;
+  font-size: ($size / $basesize) + rem !important;
+}
+
+// カラーコード
+$base: #333333;
+$white: #ffffff;
+$black: #000000;
+$gray: #eeeeee;
+$red: #dc143c;
+$blue: #1e90ff;
+$cGourmet: #e06860;
+$cArt: #e0c040;
+$cGolf: #80bcc0;
+$cCamera: #a0806c;
+$cLife: #80c4a0;
+$cCollection: #c090c8;
+
+// メディアクエリ
+// min-width *モバイルファースト
+$breakpoint-up: (
+  'ss': 'screen and (min-width: 320px)',
+  'sm': 'screen and (min-width: 480px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1024px)',
+  'xl': 'screen and (min-width: 1260px)',
+) !default;
+// max-width *デスクトップファースト
+$breakpoint-down: (
+  'xl': 'screen and (max-width: 1260px)',
+  'lg': 'screen and (max-width: 1024px)',
+  'md': 'screen and (max-width: 768px)',
+  'sm': 'screen and (max-width: 480px)',
+  'ss': 'screen and (max-width: 320px)',
+) !default;
+// @mixinの定義 min-width *モバイルファースト
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+// @mixinの定義 max-width *デスクトップファースト
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+// Flexbox @mixinの定義
+@mixin flex($justify: 0, $align: 0, $wrap: 0, $align-content: 0, $column: 0) {
+  display: flex;
+
+  // justify-content水平方向揃え（第一引数）
+  @if $justify==start {
+    // 左揃え
+    justify-content: flex-start;
+  } @else if $justify==end {
+    // 右揃え
+    justify-content: flex-end;
+  } @else if $justify==center {
+    // 中央揃え
+    justify-content: center;
+  } @else if $justify==between {
+    // 両端配置
+    justify-content: space-between;
+  } @else if $justify==around {
+    // 均等配置
+    justify-content: space-around;
+  }
+
+  // align-items垂直方向揃え（第二引数）
+  @if $align==start {
+    // 上揃え
+    align-items: flex-start;
+  } @else if $align==end {
+    // 下揃え
+    align-items: flex-end;
+  } @else if $align==center {
+    // 中央揃え
+    align-items: center;
+  } @else if $align==baseline {
+    // ベースライン
+    align-items: baseline;
+  } @else if $align==stretch {
+    // 高さ揃え
+    align-items: stretch;
+  }
+
+  // flex-wrap子要素の折り返し設定（第三引数）
+  @if $wrap==nowrap {
+    // 折り返ししない
+    flex-wrap: nowrap;
+  } @else if $wrap==wrap {
+    // 上から下
+    flex-wrap: wrap;
+  } @else if $wrap==reverse {
+    // 下から上
+    flex-wrap: wrap-reverse;
+  }
+
+  // align-content複数行設定（第四引数）
+  @if $align-content==start {
+    // 上揃え
+    align-content: flex-start;
+  } @else if $align-content==end {
+    // 下揃え
+    align-content: flex-end;
+  } @else if $align-content==center {
+    // 中央揃え
+    align-content: center;
+  } @else if $align-content==between {
+    // 両端配置
+    align-content: space-between;
+  } @else if $align-content==around {
+    // 均等配置
+    align-content: space-around;
+  } @else if $align-content==stretch {
+    // 高さ揃え
+    align-content: stretch;
+  }
+
+  // flex-direction子要素の並び設定（第五引数）
+  @if $column==1 {
+    // 逆方向
+    flex-direction: row-reverse;
+  } @else if $column==2 {
+    // 縦並び
+    flex-direction: column;
+  } @else if $column==3 {
+    // columnの逆方向
+    flex-direction: column-reverse;
+  }
+}

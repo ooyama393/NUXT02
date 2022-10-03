@@ -1,0 +1,114 @@
+@import 'reset';
+@import 'layout';
+
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// iPhoneでタップした時の枠線を消す
+a {
+  outline: none;
+}
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+.align_l {
+  text-align: left;
+}
+.align_c {
+  text-align: center;
+}
+
+.colorGray {
+  color: #808080;
+}
+
+// pc/sp
+.pc_blk {
+  display: block;
+  @include mq-down() {
+    display: none;
+  }
+}
+.pc_in-blk {
+  display: inline-block;
+  @include mq-down() {
+    display: none;
+  }
+}
+.sp_blk {
+  display: none;
+  @include mq-down() {
+    display: block;
+  }
+}
+.sp_in-blk {
+  display: none;
+  @include mq-down() {
+    display: inline-block;
+  }
+}
+.pc_none {
+  display: none;
+  @include mq-down() {
+    display: inline-block;
+  }
+}
+.sp_none {
+  display: inline-block;
+  @include mq-down() {
+    display: none;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.cf:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.cf:before {
+  content: '';
+  display: block;
+  clear: both;
+}
+.cf {
+  display: block;
+}
+
+// フォント読み込み
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap'); // 共通パーツ
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  word-wrap: break-word;
+  @include mq-down() {
+    font-size: 14px;
+  }
+}
+
+.box01 {
+  background-color: #ddd;
+  color: #555;
+  text-align: center;
+  @include mq-up(lg) {
+    color: red;
+  }
+}

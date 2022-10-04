@@ -7,7 +7,7 @@
     </div>
 
     <div class="w-full md:max-w-3xl mx-auto pt-20 px-6 md:px-0">
-      <base-heading>menuuu</base-heading>
+      <base-heading>menu api</base-heading>
 
       <layout-menu-list
         v-for="(item, index) in menuItems"
